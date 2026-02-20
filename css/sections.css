@@ -1,0 +1,838 @@
+
+
+/* ===== Hero ===== */
+.hero{
+  height: 150vh;
+  padding-top: 64px;     /* เผื่อ topbar */
+  position: relative;
+  overflow: hidden;      /* กัน video ล้น */
+}
+
+/* ให้ video เป็น background ครอบเต็ม */
+.hero-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* เหมือน background-size: cover */
+  object-position: center;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* overlay  */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.25);
+  z-index: 1;
+}
+
+
+
+/* กันเนื้อหาด้านล่างโดนตัวอักษรทับ */
+main{
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding-top: 120px; /* เผื่อพื้นที่ใต้ตัว sticky-logo */
+}
+
+
+
+.new{
+ padding-top: 180px;
+ 
+}
+
+/* ตัวครอบทั้งหมดให้บีบซ้ายขวา + อยู่กลาง */
+.new-wrap{
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ครอบรูป เพื่อให้จัดกลาง + เป็นกรอบให้ sticky ทำงาน */
+.new-media{
+  position: relative;
+  width: 100%;
+  margin: 0 auto 24px;
+}
+
+/* ทำให้รูปอยู่กลางและ responsive */
+.new-media img{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+
+}
+
+/* ชั้น overlay: ทำให้พื้นที่ครอบทับรูปทั้งหมด */
+.new-overlay{
+  position: absolute;
+  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  pointer-events: none;  /* ไม่บังการคลิก */
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* ตรงกลางรูป */
+}
+
+/* ตัว NEW: sticky ติดใต้ navbar และจะหยุดตอนพ้นขอบล่างรูป */
+.new-badge{
+  position: sticky;
+  top: 64px; /* ใต้ topbar */
+
+  font-weight: 800;
+  letter-spacing: .02em;
+  font-size: clamp(48px, 12vw, 160px);
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+
+/* ตัวหนังสือด้านล่าง */
+.new h3{
+  margin: 0 0 10px;
+}
+
+.new p{
+  margin: 0 auto;
+  max-width: 90ch; /* บีบให้อ่านง่าย */
+  line-height: 1.6;
+}
+
+/* ===== BEST SELL ===== */
+.best-sell{
+  padding: 180px 0;
+}
+
+.best-sell-wrap{
+  width: min(1800px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* สำคัญ: กำหนดกรอบให้มีพื้นที่แน่นอน */
+.best-sell-media{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* ปรับได้ เช่น 4/5, 16/9 */
+  background: #000;      /* กันพื้นขาวถ้าวิดีโอยังไม่ paint */
+  overflow: hidden;
+}
+
+/* ทำให้ video เป็น background cover */
+.best-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* overlay อยู่ด้านบน */
+.best-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;     /* ✅ กลางรูปตลอด */
+  pointer-events: none;
+  z-index: 2;
+  padding-top: 0;          /* ✅ ไม่ใช้ 35vh */
+}
+
+.best-badge{
+  position: relative;
+  font-weight: 800;
+  letter-spacing: .02em;
+  font-size: clamp(48px, 5vw, 160px);
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+@media (max-width: 600px){
+  .best-sell-wrap{
+    width: calc(100% - 16px);
+    gap: 12px;
+  }
+}
+
+/* ===== BEST SELL TEXT ===== */
+.best-text{
+  width: min(900px, calc(100% - 48px)); /* เท่ากับ new-wrap */
+  margin: 32px auto 0;
+  text-align: center;
+}
+
+.best-text h3{
+  margin: 0 0 10px;
+}
+
+.best-text p{
+  font-size: medium;
+  margin: 0 auto;
+  max-width: 90ch;
+  line-height: 1.6;
+}
+
+/* ===== COLLECTION LAYOUT ===== */
+.collection{
+  padding: 10px 0;
+}
+
+.collection-wrap{
+  width: min(1350px, calc(100% - 48px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;                 /* ระยะห่างระหว่างรูป */
+}
+
+/* อันแรก (COLLECTION 01) ให้เต็มแถว */
+.collection-media:first-child{
+  grid-column: 1 / -1;       /* span 2 columns */
+  aspect-ratio: 21 / 9;      /* ให้กว้างแบบแบนๆ  */
+}
+
+/* อันที่ 2-3 ให้เป็นสี่เหลี่ยมจัตุรัส */
+.collection-media:nth-child(2),
+.collection-media:nth-child(3){
+  aspect-ratio: 1 / 1;
+}
+
+/* media base */
+.collection-media{
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  isolation: isolate; 
+}
+
+/* ทำให้ img ครอบเต็มเหมือน video */
+.collection-media img,
+.collection-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* เริ่มต้น: โชว์รูป, ซ่อนวิดีโอ */
+.collection-hero .collection-img{
+  opacity: 1;
+  transition: opacity .35s ease;
+  z-index: 1;
+}
+
+.collection-hero .collection-video{
+  opacity: 0;
+  transition: opacity .35s ease;
+  z-index: 2;
+}
+
+/* hover: ซ่อนรูป, โชว์วิดีโอ */
+.collection-hero:hover .collection-img{
+  opacity: 0;
+}
+
+.collection-hero:hover .collection-video{
+  opacity: 1;
+}
+
+/* overlay อยู่บนสุดเหมือนเดิม */
+.collection-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 3;
+}
+.collection-badge{
+  font-weight: 800;
+  letter-spacing: .02em;
+  font-size: clamp(28px, 4vw, 72px); /* ลดให้บาลานซ์กับกล่องเล็ก */
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+
+/* ===== Hover swap image (02,03) ===== */
+
+.collection-hover{
+  position: relative;
+  overflow: hidden;
+}
+
+/* รูปหลัก */
+.collection-img-main{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+
+/* รูป hover */
+.collection-img-hover{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 0;
+  object-position: center 20%; 
+  transition: opacity .35s ease;
+}
+
+/* เมื่อ hover */
+.collection-hover:hover .collection-img-main{
+  opacity: 0;
+}
+
+.collection-hover:hover .collection-img-hover{
+  opacity: 1;
+}
+
+
+/* responsive: มือถือให้เรียงลง 1 คอลัมน์ */
+@media (max-width: 600px){
+  .collection-wrap{
+    width: calc(100% - 16px);
+    gap: 12px;
+  }
+}
+
+
+/* ===== TICKER ===== */
+.ticker{
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  padding: 22px 0;
+  margin: 100px 0;
+}
+
+.ticker-track{
+  display: flex;
+  width: max-content;
+
+  /* วิ่งช้า */
+  animation: tickerMove 25s linear infinite;
+}
+
+.ticker-group{
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding-right: 80px;
+  white-space: nowrap;
+}
+
+.ticker-item{
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: clamp(24px, 5vw, 56px);
+}
+
+.ticker-item.best{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ticker-icon{
+  width: 60px;
+}
+
+/* เลื่อนเต็มพื้นที่แบบเนียน */
+@keyframes tickerMove{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ===== 3 GRID INFO  ===== */
+.info{
+  background: #fff;
+  padding: 120px 0;              /* ระยะห่างบน-ล่าง */
+}
+
+.info-wrap{
+  width: min(1400px, calc(100% - 120px)); /* ขอบซ้าย-ขวาห่าง */
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 140px;                    /* ระยะห่างระหว่าง 3 กล่อง */
+}
+
+.info-item h4{
+  margin: 0 0 12px;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.info-item p{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #7a7a7a;               
+  max-width: 38ch;               /* จำกัดความกว้าง*/
+}
+
+.underline-text{
+    text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .info-wrap{
+    width: min(900px, calc(100% - 48px));
+    gap: 48px;
+  }
+  .info-wrap{
+    grid-template-columns: 1fr;  /* เรียงลง */
+  }
+  .info{
+    padding: 72px 0;
+  }
+}
+
+
+/* ===== FAQ ===== */
+.faq{
+  background: #000;
+  color: #fff;
+  padding: 120px 0;
+}
+
+.faq-wrap{
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.faq h2{
+  margin: 0 0 10px;
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.faq-sub{
+  margin: 0 auto 26px;
+  max-width: 70ch;
+  color: rgba(255,255,255,.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Tabs */
+.faq-tabs{
+  display: inline-flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 18px 0 48px;
+}
+
+.faq-tab{
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.9);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.faq-tab.is-active{
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.faq-tab.is-disabled{
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* Panels */
+.faq-panels{
+  text-align: left;
+  margin-top: 8px;
+}
+
+/* Accordion */
+.faq-item{
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  padding: 18px 0;
+}
+
+.faq-item summary{
+  list-style: none;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-item summary::-webkit-details-marker{ display:none; }
+
+.faq-item summary::after{
+  content: "⌄";
+  font-size: 18px;
+  transform: translateY(-1px);
+  opacity: .9;
+}
+
+.faq-item[open] summary::after{
+  content: "⌃";
+}
+
+.faq-body{
+  margin-top: 10px;
+  color: rgba(255,255,255,.65);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 95ch;
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .faq{
+    padding: 80px 0;
+  }
+  .faq-wrap{
+    width: calc(100% - 20px);
+  }
+
+  /* Tabs เรียง 1 คอลัมน์ */
+  .faq-tabs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0 32px;
+  }
+}
+
+/* ===== INQUIRY FORM ===== */
+.inquiry{
+  background: #fff;
+  padding-top: 110px;
+  padding-bottom: 20px;
+}
+
+.inquiry-wrap{
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.inquiry-left h2{
+  margin: 0 0 14px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  font-size: clamp(34px, 4.2vw, 54px);
+  line-height: 0.95;
+}
+
+.inquiry-left p{
+  margin: 0;
+  max-width: 36ch;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.homepage{
+  padding-left: 15px;
+}
+
+.homepage-link{
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .08em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  
+}
+
+/* Form */
+.inquiry-form{
+  width: 100%;
+}
+
+/* radios row */
+.inquiry-radios{
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.radio{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  color: #111;
+}
+
+.radio input{ accent-color: #111; }
+
+/* grid fields */
+.inquiry-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+}
+
+.field{
+  text-align: left;
+}
+
+.field--full{
+  grid-column: 1 / -1;
+}
+
+.field label{
+  display: block;
+  font-size: 11px;
+  color: #9a9a9a;
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #9d9d9d;
+  padding: 10px 0 12px;
+  font-size: 14px;
+  outline: none;
+  background: transparent;
+  color: #111;
+}
+
+.field select{
+  padding-right: 24px;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #111 50%),
+                    linear-gradient(135deg, #111 50%, transparent 50%);
+  background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.field textarea{
+  resize: vertical;
+  border: 1px solid #9d9d9d;
+  padding: 12px;
+}
+
+/* errors */
+.error{
+  display: block;
+  min-height: 16px;
+  font-size: 11px;
+  color: #c62828;
+  margin-top: 6px;
+}
+
+/* checkbox */
+.inquiry-check{
+  margin-top: 14px;
+  text-align: left;
+}
+
+.check{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.check input{ accent-color: #111; }
+
+/* send button */
+.inquiry-send{
+  margin-top: 20px;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 16px 60px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.inquiry-send:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.form-note{
+  margin: 12px 0 0;
+  color: #2e7d32;
+  font-size: 12px;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .inquiry-wrap{
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .inquiry-home{
+    margin-top: 30px;
+  }
+
+  .inquiry-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .homepage{
+    margin-top: 30px;
+  }
+}
+
+
+/* ===== FOOTER ===== */
+.footer{
+  background: #e9e9e9;
+  padding: 80px 0 40px;
+  font-size: 14px;
+  color: #222;
+}
+
+.footer-wrap{
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Grid Desktop */
+.footer-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-col h4{
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.footer-col ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li{
+  margin-bottom: 14px;
+}
+
+.footer-col a{
+  text-decoration: none;
+  color: #555;
+}
+
+.footer-col a:hover{
+  color: #000;
+}
+
+/* Newsletter */
+.newsletter input{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #999;
+  background: transparent;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.newsletter button{
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #dcdcdc;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Bottom */
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px){
+
+  .footer{
+    padding: 60px 0 30px;
+  }
+
+  .footer-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+  }
+
+  /* Newsletter เต็มแถว */
+  .newsletter{
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom{
+    margin-top: 40px;
+  }
+}

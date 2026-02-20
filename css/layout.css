@@ -1,0 +1,341 @@
+/* ==== Top bar ==== */
+.topbar{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 24px;
+    z-index: 1000;
+
+}
+
+.topbar-left{ width: 180px;}
+.topbar-center{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+/* ทำให้ลิงก์ในเมนูขยายตอนเอาเมาส์ชี้ */
+.topbar-center a{
+  display: inline-block;              /* สำคัญ: ให้ transform ทำงานแบบไม่เพี้ยน */
+  transform-origin: center;
+  transition: transform .25s ease, letter-spacing .25s ease, opacity .25s ease;
+}
+
+.topbar-center a:hover{
+  transform: scale(1.12);             /* ขยาย */
+  letter-spacing: .14em;              /* เพิ่มความหรู (ถ้าไม่อยากเอาออกได้) */
+}
+
+/* ทำให้ตัวอื่นจางลงนิดเวลา hover เพื่อให้ดู premium */
+.topbar-center:hover a{
+  opacity: .55;
+}
+
+.topbar-center:hover a:hover{
+  opacity: 1;
+}
+
+.menu-item{
+  position: relative;
+  bottom: 3px;
+}
+
+.editorial-overlay{
+  position: fixed;
+  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  background: #000;
+  z-index: 2000;         /* สูงกว่า .topbar (1000) */
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+
+  pointer-events: none; /* สำคัญ: ไม่ให้พื้นที่ดำทั้งจอเป็น hover zone */
+}
+
+.menu-item.editorial:hover .editorial-overlay{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* กล่องเมนู (พื้นที่จำกัดตามกรอบแดง) */
+.editorial-box{
+  position: absolute;
+  top: 0;               /* JS จะจัดตำแหน่งให้ตรงกับ navbar */
+  left: 0;
+
+  width: 220px;         /* ปรับได้ */
+  padding: 18px 0;
+  text-align: center;
+  
+  pointer-events: auto; /* สำคัญ: ให้เฉพาะกล่องนี้รับเมาส์ */
+}
+
+/* จัดตัวหนังสือ */
+.editorial-box h3{
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: .08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.editorial-box ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.editorial-box li{
+  margin: 12px 0;
+  font-size: 14px;
+  letter-spacing: .08em;
+  color: #fff;
+  opacity: .85;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.editorial-box li:hover{
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+.topbar-right{
+    width: 180px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+.lang{
+  border: none;
+  background: transparent;
+  letter-spacing: .06em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.topbar a{
+    text-decoration: none;
+    color: #111;
+    font-size: 12px;
+    letter-spacing: .08em;
+    font-weight: bold;
+}
+
+.sign-in{ font-weight: 500; }
+.bag{ font-size: 16px; }
+.bag img{
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ============ Mobile Nav ============ */
+
+/* ซ่อนปุ่มกลางใน desktop */
+.nav-toggle{
+    position: absolute;   /* ⭐ แก้ปัญหาหลัก */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    display: none; /* desktop ซ่อน */
+}
+
+/* เส้น 2 ขีด */
+.nav-toggle-bars{
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+  position: relative;
+}
+.nav-toggle-bars::before,
+.nav-toggle-bars::after{
+  content:"";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #111;
+}
+.nav-toggle-bars::before{ top: 2px; }
+.nav-toggle-bars::after{ bottom: 2px; }
+
+/* เมนูเต็มจอ */
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 3000; /* สูงกว่า topbar */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+/* เปิดเมนู */
+body.menu-open .mobile-menu{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ปุ่มปิด (กากบาท) ให้อยู่ตำแหน่งเดียวกับปุ่มกลาง */
+.nav-close{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  line-height: 48px;
+  cursor: pointer;
+  color: #111;
+}
+
+/* ลิงก์กลางจอ */
+.mobile-links{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 110px; /* เว้นจากด้านบน */
+  gap: 22px;
+}
+
+.mobile-links a,
+.mobile-editorial-btn{
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-decoration: none;
+  color: #111;
+  font-weight: 700;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Editorial dropdown */
+.mobile-editorial{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mobile-editorial-list{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mobile-editorial.is-open .mobile-editorial-list{
+  display: flex;
+}
+
+.mobile-editorial-list a{
+  font-weight: 500;
+  opacity: .9;
+}
+
+.caret{
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+/* ====== Responsive breakpoint ====== */
+@media (max-width: 768px){
+  /* ซ่อนเมนูเดิมบนมือถือ */
+  .topbar-center{
+    display: none;
+  }
+
+
+
+  /* แสดงปุ่ม 2 ขีดตรงกลาง */
+  .nav-toggle{
+    display: block;
+   
+  }
+}
+
+
+/* PLAIMANAS */
+.sticky-logo{
+  position: fixed;
+  top: 20px;
+  left: 0; right: 0;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 900;
+}
+
+.sticky-logo h1{
+  position: absolute;
+  margin: 0;
+  font-weight: 1000;
+  letter-spacing: .02em;
+  line-height: 1;
+  font-size: clamp(80px, 17vw, 450px);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ชั้นพื้น: ดำทึบตลอดเวลา */
+.logo-solid{
+  color: #000;
+  z-index: 1;
+}
+
+/* ชั้น media: ทำให้เห็น texture แต่โชว์เฉพาะตอนทับ media */
+.logo-media {
+    color: #fff;
+    mix-blend-mode: difference;
+    z-index: 2;
+    /* สำคัญ: กำหนด transition เล็กน้อยเพื่อให้การตัดดูนุ่มนวล */
+    transition: clip-path 0.1s linear; 
+    pointer-events: none;
+    opacity: 1; /* ปรับเป็น 1 เพื่อให้เห็นผลของ difference ชัดเจน */
+}
+
+/* ===== Mobile Logo ===== */
+@media (max-width: 768px) {
+
+  .sticky-logo{
+    height: 120px;          /* ลดพื้นที่โลโก้ */
+    top: 64px;
+  }
+
+  .sticky-logo h1{
+    font-size: 16vw;        /* ลดจาก 24vw → พอดีมือถือ */
+    line-height: 0.9;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+}

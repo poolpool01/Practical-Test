@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Prata&display=swap"
+        rel="stylesheet">
+    <!-- CSS อยู่ใน head -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <Header class="topbar">
+        <div class="topbar-left">
+            <select class="lang">
+                <option value="THB">TH-THB</option>
+                <option value="US">US-USD</option>
+            </select>
+        </div>
+
+        <nav class="topbar-center">
+            <a href="">WOMEN</a>
+            <a href="">COLLECTIONS</a>
+
+            <div class="menu-item editorial">
+                <a href="">EDITORIAL</a>
+
+                <!-- Overlay -->
+                <div class="editorial-overlay">
+                    <div class="editorial-box">
+                        <h3>EDITORIAL</h3>
+                        <ul>
+                            <li>A.S.C</li>
+                            <li>BAZAAR</li>
+                            <li>ELLE</li>
+                            <li>GQ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <a href="">NEWS</a>
+            <a href="">STORIES</a>
+        </nav>
+
+        <div class="topbar-right">
+            <a href="#" class="sign-in">SIGN IN</a>
+            <span class="bag"><img src="./images/shop.png" alt=""></span>
+        </div>
+
+        <!-- ปุ่มกลาง (มือถือ) -->
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+
+        <!-- เมนูเต็มจอ (มือถือ) -->
+        <div class="mobile-menu" aria-hidden="true">
+            <button class="nav-close" type="button" aria-label="Close menu">✕</button>
+
+            <nav class="mobile-links">
+                <a href="">WOMEN</a>
+                <a href="">COLLECTIONS</a>
+
+                <div class="mobile-editorial">
+                    <button class="mobile-editorial-btn" type="button" aria-expanded="false">
+                        EDITORIAL <span class="caret">▼</span>
+                    </button>
+
+                    <div class="mobile-editorial-list">
+                        <a href="">A.S.C</a>
+                        <a href="">BAZAAR</a>
+                        <a href="">ELLE</a>
+                        <a href="">GQ</a>
+                        <a href="">L'OFFICIAL THAILAND</a>
+                        <a href="">NUMERO</a>
+                        <a href="">VOGUE</a>
+
+                    </div>
+                </div>
+
+                <a href="">NEWS</a>
+                <a href="">STORIES</a>
+            </nav>
+        </div>
+    </Header>
+
+    <div class="sticky-logo">
+        <h1 class="logo-solid">PLAIMANAS</h1>
+        <h1 class="logo-media">PLAIMANAS</h1>
+    </div>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="video/mockup_video576.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <section class="new">
+        <div class="new-wrap">
+            <div class="new-media">
+                <img src="./images/new.png" alt="">
+
+                <!-- overlay ครอบ เพื่อวาง NEW ทับบนรูป -->
+                <div class="new-overlay">
+                    <div class="new-badge">NEW</div>
+                </div>
+            </div>
+
+            <h3>Sed egestas, nibh a condimentum imperdiet</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo, turpis
+                elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+            </p>
+        </div>
+    </section>
+
+
+    <section class="best-sell">
+        <div class="best-sell-wrap">
+            <div class="best-sell-media">
+                <video class="best-video" muted autoplay loop playsinline preload="auto">
+                    <source src="video/DTS_THE_LEADER_ID10.mp4" type="video/mp4">
+                </video>
+
+                <div class="best-overlay">
+                    <div class="best-badge">BESTSELLER</div>
+                </div>
+            </div>
+
+            <div class="best-text">
+                <h3>Sed egestas, nibh a condimentum imperdiet</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo,
+                    turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection">
+        <div class="collection-wrap">
+            <div class="collection-media collection-hero">
+                <!-- รูปพื้น -->
+                <img class="collection-img" src="./images/sea.jpg" alt="Collection 01">
+
+                <!-- วิดีโอซ้อน (ใช้ไฟล์เดิม) -->
+                <video class="collection-video" muted loop playsinline preload="metadata">
+                    <source src="video/DTS_THE_LEADER_ID11.mp4" type="video/mp4">
+                </video>
+
+                <div class="collection-overlay">
+                    <div class="collection-badge">COLLECTION 01</div>
+                </div>
+            </div>
+
+            <!-- COLLECTION 02 -->
+            <div class="collection-media collection-hover collection-02">
+                <!-- รูปปกติ -->
+                <img class="collection-img-main" src="./images/teeth.png" alt="">
+
+                <!-- รูปตอน hover -->
+                <img class="collection-img-hover" src="./images/people.jpg" alt="">
+
+                <div class="collection-overlay">
+                    <div class="collection-badge">COLLECTION 02</div>
+                </div>
+            </div>
+
+            <!-- COLLECTION 03 -->
+            <div class="collection-media collection-hover collection-03">
+                <img class="collection-img-main" src="./images/flower.jpg" alt="">
+                <img class="collection-img-hover" src="./images/people.jpg" alt="">
+
+                <div class="collection-overlay">
+                    <div class="collection-badge">COLLECTION 03</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ticker">
+        <div class="ticker-track">
+            <div class="ticker-group">
+                <span class="ticker-item best">
+                    <img src="./images/left.png" class="ticker-icon">
+                    BEST SELLING
+                    <img src="./images/right.png" class="ticker-icon">
+                </span>
+
+                <span class="ticker-item">NEW ARRIVAL</span>
+
+                <span class="ticker-item best">
+                    <img src="./images/left.png" class="ticker-icon">
+                    BEST SELLING
+                    <img src="./images/right.png" class="ticker-icon">
+                </span>
+            </div>
+
+            <div class="ticker-group">
+                <span class="ticker-item">NEW ARRIVAL</span>
+            </div>
+
+            <!-- เพื่อให้วนเต็มพื้นที่ -->
+            <div class="ticker-group">
+                <span class="ticker-item best">
+                    <img src="./images/left.png" class="ticker-icon">
+                    BEST SELLING
+                    <img src="./images/right.png" class="ticker-icon">
+                </span>
+
+                <span class="ticker-item">NEW ARRIVAL</span>
+
+                <span class="ticker-item best">
+                    <img src="./images/left.png" class="ticker-icon">
+                    BEST SELLING
+                    <img src="./images/right.png" class="ticker-icon">
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="info">
+        <div class="info-wrap">
+
+            <div class="info-item">
+                <h4>WORLDWIDE SHIPPING</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus
+                    commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+                </p>
+            </div>
+
+            <div class="info-item">
+                <h4>CUSTOMER SERVICE</h4>
+                <p>
+                    <span class="underline-text">Lorem ipsum dolor sit amet,</span>
+                    consectetur adipiscing elit. Nam ornare, nisl non rhoncus
+                    commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+                </p>
+            </div>
+
+            <div class="info-item">
+                <h4>SECURE PAYMENT</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus
+                    commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="faq" id="faq">
+        <div class="faq-wrap">
+            <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            <p class="faq-sub">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo.
+            </p>
+
+            <!-- Tabs -->
+            <div class="faq-tabs" role="tablist" aria-label="FAQ tabs">
+                <button class="faq-tab is-disabled" type="button" aria-disabled="true">ORDERS</button>
+
+                <button class="faq-tab is-active" type="button" data-tab="shipping" role="tab" aria-selected="true">
+                    SHIPPING
+                </button>
+
+                <button class="faq-tab" type="button" data-tab="returns" role="tab" aria-selected="false">
+                    RETURNS &amp; EXCHANGES
+                </button>
+
+                <button class="faq-tab is-disabled" type="button" aria-disabled="true">SIZING &amp; PRODUCTS</button>
+            </div>
+
+            <!-- Panels -->
+            <div class="faq-panels">
+                <!-- SHIPPING -->
+                <div class="faq-panel is-active" data-panel="shipping" role="tabpanel">
+                    <details class="faq-item" open>
+                        <summary>DO YOU OFFER INTERNATIONAL SHIPPING?</summary>
+                        <div class="faq-body">
+                            Items can be returned within 14 days of receipt, provided they are unworn, unwashed,
+                            and in original condition with tags attached.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>HOW LONG DOES DELIVERY TAKE?</summary>
+                        <div class="faq-body">
+                            Delivery times vary by location. Standard shipping typically takes 3–7 business days.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>HOW CAN I TRACK MY ORDER?</summary>
+                        <div class="faq-body">
+                            Once shipped, you will receive a tracking link via email. You can also track from your
+                            account page.
+                        </div>
+                    </details>
+                </div>
+
+                <!-- RETURNS -->
+                <div class="faq-panel" data-panel="returns" role="tabpanel" hidden>
+                    <details class="faq-item" open>
+                        <summary>WHAT IS YOUR RETURN POLICY?</summary>
+                        <div class="faq-body">
+                            Items can be returned within 14 days of receipt, provided they are unworn, unwashed,
+                            and in original condition with tags attached.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>CAN I EXCHANGE FOR A DIFFERENT SIZE?</summary>
+                        <div class="faq-body">
+                            Yes. Exchanges are subject to stock availability. Please contact support to arrange an
+                            exchange.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>ARE SALE ITEMS REFUNDABLE?</summary>
+                        <div class="faq-body">
+                            Sale items are final sale unless otherwise stated. Please review product pages for details.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="inquiry" id="inquiry">
+
+        <div class="inquiry-wrap">
+            <!-- Left text -->
+            <div class="inquiry-left">
+                <h2>MAKE AN<br>INQUIRY</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus commodo.
+                </p>
+
+            </div>
+
+            <!-- Right form -->
+            <form class="inquiry-form" id="inquiryForm" novalidate>
+                <!-- radios -->
+                <div class="inquiry-row inquiry-row--full inquiry-radios">
+                    <label class="radio">
+                        <input type="radio" name="mode" value="onsite" checked>
+                        <span>Onsite</span>
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" name="mode" value="hybrid">
+                        <span>Hybrid</span>
+                    </label>
+                </div>
+
+                <!-- 2 columns -->
+                <div class="inquiry-grid">
+                    <div class="field">
+                        <label for="fullName">Full name*</label>
+                        <input id="fullName" name="fullName" type="text" required placeholder="Full name">
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email*</label>
+                        <input id="email" name="email" type="email" required value="Plaimanas@gmail.com">
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone Number*</label>
+                        <input id="phone" name="phone" type="tel" required placeholder="Phone Number">
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="subject">Select Subject*</label>
+                        <select id="subject" name="subject" required placeholder="Select Subject">
+
+                            <option value="general">General inquiry</option>
+                            <option value="job">Job Application</option>
+                            <option value="media">Media &amp; Press</option>
+
+                        </select>
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="field field--full">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Write your message..."></textarea>
+                    </div>
+                </div>
+
+                <!-- checkbox -->
+                <div class="inquiry-row inquiry-row--full inquiry-check">
+                    <label class="check">
+                        <input type="checkbox" id="agree" required>
+                        <span>I agree to all terms &amp; conditions</span>
+                    </label>
+                </div>
+
+                <!-- submit -->
+                <div class="inquiry-row inquiry-row--full">
+                    <button class="inquiry-send" type="submit" id="sendBtn" disabled>SEND</button>
+                    <p class="form-note" id="formNote" aria-live="polite"></p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="homepage">
+            <a class="homepage-link" href="#">HOMEPAGE</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-wrap">
+
+            <div class="footer-grid">
+
+                <div class="footer-col">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Editorial</a></li>
+                        <li><a href="#">Stories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>HELP</h4>
+                    <ul>
+                        <li><a href="#">Payment Notification</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>SOCIAL</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>LEGAL</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookies Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col newsletter">
+                    <h4>NEWSLETTER</h4>
+                    <input type="email" placeholder="Email">
+                    <button>SUBSCRIBE</button>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>©PLAIMANAS</p>
+                <p>Web by .:*</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript อยู่ท้าย body -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
